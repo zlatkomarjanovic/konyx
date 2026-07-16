@@ -22,7 +22,7 @@ export function FaqAccordion() {
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <div className="faq-shell rounded-3xl p-3">
+    <div className="faq-shell rounded-3xl border border-border/80 p-3 dark:border-white/10">
       <div className="flex flex-col gap-3" data-reveal="rise-stagger">
         {faqItems.map((item) => {
           const open = openId === item.id;
@@ -33,7 +33,7 @@ export function FaqAccordion() {
             <div
               key={item.id}
               data-reveal-item
-              className="faq-row overflow-hidden rounded-[20px] border bg-white dark:bg-[#0f0f0f]"
+              className="overflow-hidden rounded-[20px] border border-border/70 bg-card dark:border-white/10"
             >
               <button
                 id={triggerId}
@@ -41,7 +41,7 @@ export function FaqAccordion() {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenId(open ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-surface/60 dark:hover:bg-white/[0.03] sm:py-[1.125rem]"
+                className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-black/[0.03] dark:hover:bg-white/[0.04] sm:py-[1.125rem]"
               >
                 <span className="text-sm font-medium leading-snug text-foreground sm:text-[0.9375rem]">
                   {item.question}
@@ -57,7 +57,7 @@ export function FaqAccordion() {
                 style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
               >
                 <div className="overflow-hidden">
-                  <p className="px-4 pb-4 text-sm leading-relaxed text-muted/90 sm:pb-5">
+                  <p className="px-4 pb-4 text-sm leading-relaxed text-muted/90 dark:text-white/55 sm:pb-5">
                     {item.answer}
                   </p>
                 </div>

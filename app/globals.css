@@ -306,38 +306,10 @@ button.btn-secondary:hover,
 
 .faq-shell {
   background-color: #f6f6f7;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow:
-    rgba(0, 0, 0, 0.06) 0px 32px 50px -8px,
-    0 0 0 1px rgba(212, 212, 216, 0.85),
-    0 0 32px rgba(212, 212, 216, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .dark .faq-shell {
   background-color: #1c1c1c;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow:
-    rgba(0, 0, 0, 0.55) 0px 32px 50px -8px,
-    0 0 0 1px rgba(255, 255, 255, 0.07),
-    0 0 36px rgba(212, 212, 216, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.faq-row {
-  border-color: rgba(212, 212, 216, 0.75);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.85),
-    0 0 20px rgba(212, 212, 216, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-}
-
-.dark .faq-row {
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 0 24px rgba(212, 212, 216, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .benefits-dot-pattern {
