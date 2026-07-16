@@ -3,7 +3,8 @@ import { PrimaryButton } from "./PrimaryButton";
 export function Hero() {
   return (
     <div className="max-w-[33rem]">
-      <h1 className="font-serif text-3xl leading-[1.12] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+      <p className="text-sm font-light text-muted/70">Your users recognize AI slop</p>
+      <h1 className="mt-3 font-serif text-3xl leading-[1.12] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
         Skip <span className="italic text-accent">twenty prompts</span> before your
         agent stops <span className="italic text-accent">producing slop</span>.
       </h1>
