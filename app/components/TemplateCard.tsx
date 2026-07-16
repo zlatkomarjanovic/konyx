@@ -11,7 +11,7 @@ export function TemplateCard({ template }: TemplateCardProps) {
   return (
     <Link
       href={`/templates/${template.slug}`}
-      className="template-card group block p-4 sm:p-5"
+      className="template-card group block p-4"
     >
       <div className="template-card-frame overflow-hidden p-2">
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg">
@@ -19,7 +19,7 @@ export function TemplateCard({ template }: TemplateCardProps) {
         </div>
       </div>
 
-      <div className="pt-4">
+      <div className="pt-3">
         <div className="flex items-center justify-between gap-3">
           <SectionTag className="px-2.5 py-0.5 text-xs text-muted">
             {CATEGORY_LABELS[template.category]}

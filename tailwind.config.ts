@@ -5,9 +5,9 @@ const config: Config = {
     extend: {
       colors: {
         accent: {
-          DEFAULT: "#2563eb",
-          dark: "#1d4ed8",
-          foreground: "#ffffff",
+          DEFAULT: "var(--accent)",
+          dark: "var(--accent-dark)",
+          foreground: "var(--accent-foreground)",
         },
         surface: {
           DEFAULT: "#f4f6f9",

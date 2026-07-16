@@ -2,13 +2,17 @@ import { benefits } from "@/lib/benefits";
 import { BenefitAnimatedIcon } from "./BenefitAnimatedIcon";
 import { Container } from "./Container";
 import { PrimaryButton } from "./PrimaryButton";
+import { SecondaryButton } from "./SecondaryButton";
 import { SectionTag } from "./SectionTag";
 
 export function BenefitsGrid() {
   return (
     <section id="benefits" className="relative overflow-hidden bg-white py-section-sm dark:bg-black md:py-section">
       <Container className="relative">
-        <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <div
+          className="mx-auto flex max-w-2xl flex-col items-center text-center"
+          data-reveal="slide-left"
+        >
           <SectionTag>Why choose Konyx</SectionTag>
 
           <h2 className="mt-8 font-serif text-3xl tracking-tight text-foreground md:text-5xl md:leading-tight">
@@ -24,15 +28,12 @@ export function BenefitsGrid() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <PrimaryButton href="#templates" className="h-11 px-6 text-sm font-medium">
+            <PrimaryButton href="#templates" className="h-10 px-5">
               Browse templates
             </PrimaryButton>
-            <a
-              href="#pricing"
-              className="btn-secondary inline-flex h-11 items-center justify-center rounded-[0.625rem] border border-border px-6 text-sm font-medium text-foreground"
-            >
+            <SecondaryButton href="#pricing" className="h-10 px-5">
               View pricing
-            </a>
+            </SecondaryButton>
           </div>
         </div>
 
@@ -48,11 +49,15 @@ export function BenefitsGrid() {
             }}
           />
 
-          <div className="relative grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-16">
+          <div
+            className="relative grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-16"
+            data-reveal="rise-stagger"
+          >
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
               className="flex flex-col items-center text-center"
+              data-reveal-item
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-[18px] border border-[rgba(10,15,41,0.08)] bg-white dark:border-white/10 dark:bg-card">
                 <BenefitAnimatedIcon name={benefit.icon} delay={index * 0.3} />

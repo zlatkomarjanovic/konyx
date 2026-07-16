@@ -15,7 +15,7 @@ export function Pricing() {
       />
 
       <Container className="relative">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center" data-reveal="blur-in">
           <SectionTag>Pricing</SectionTag>
 
           <h2 className="mt-6 font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] dark:text-white">
@@ -29,11 +29,12 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:gap-6" data-reveal="pop-stagger">
           {pricingPlans.map((plan) => (
             <div
               key={plan.id}
               className={plan.highlighted ? "lg:-mt-2 lg:mb-2" : undefined}
+              data-reveal-item
             >
               <PricingCard plan={plan} />
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactLenis } from "lenis/react";
+import { ScrollAnimations } from "./ScrollAnimations";
 
 type SmoothScrollProps = {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       }}
     >
       {children}
+      <ScrollAnimations />
     </ReactLenis>
   );
 }

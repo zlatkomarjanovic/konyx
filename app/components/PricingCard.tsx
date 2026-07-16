@@ -1,5 +1,6 @@
 import type { PricingPlan } from "@/lib/pricing";
 import { PrimaryButton } from "./PrimaryButton";
+import { SecondaryButton } from "./SecondaryButton";
 
 type PricingCardProps = {
   plan: PricingPlan;
@@ -13,14 +14,14 @@ export function PricingCard({ plan }: PricingCardProps) {
     <article
       className={
         highlighted
-          ? "flex h-full flex-col rounded-[20px] border border-accent bg-card p-1 shadow-[0_10px_40px_-8px_rgba(37,99,235,0.22)] dark:border-accent/70 dark:bg-[#141414] dark:shadow-[0_0_0_1px_rgba(37,99,235,0.25),0_12px_40px_-12px_rgba(37,99,235,0.35)]"
+          ? "flex h-full flex-col rounded-[20px] border border-foreground/20 bg-card p-1 dark:border-[#52525b] dark:bg-[#141414]"
           : "flex h-full flex-col rounded-[20px] border border-border bg-card p-1 dark:border-white/10 dark:bg-[#141414]"
       }
     >
       <div
         className={
           highlighted
-            ? "rounded-2xl border border-blue-200/70 bg-blue-50/90 p-5 sm:p-6 dark:border-[#363636] dark:bg-[#212121]"
+            ? "rounded-2xl border border-border bg-[#f4f4f5] p-5 sm:p-6 dark:border-[#363636] dark:bg-[#212121]"
             : "rounded-2xl border border-border bg-surface-secondary p-5 sm:p-6 dark:border-[#363636] dark:bg-[#212121]"
         }
       >
@@ -28,14 +29,14 @@ export function PricingCard({ plan }: PricingCardProps) {
           <div
             className={
               highlighted
-                ? "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 dark:bg-white/[0.08]"
+                ? "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-foreground/[0.06] dark:bg-white/[0.08]"
                 : "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-foreground/[0.06] dark:bg-white/[0.08]"
             }
           >
             <Icon
               className={
                 highlighted
-                  ? "h-5 w-5 text-accent dark:text-accent"
+                  ? "h-5 w-5 text-foreground/70 dark:text-[#e8e8e8]"
                   : "h-5 w-5 text-foreground dark:text-white"
               }
               strokeWidth={1.75}
@@ -47,7 +48,7 @@ export function PricingCard({ plan }: PricingCardProps) {
                 {plan.name}
               </h3>
               {plan.badge && (
-                <span className="inline-flex -rotate-2 items-center rounded-full border border-accent bg-accent px-2.5 py-0.5 text-[13px] font-medium text-white">
+                <span className="inline-flex -rotate-2 items-center rounded-full border border-foreground/20 bg-foreground px-2.5 py-0.5 text-[13px] font-medium text-background dark:border-[#52525b] dark:bg-[#52525b] dark:text-white">
                   {plan.badge}
                 </span>
               )}
@@ -79,14 +80,14 @@ export function PricingCard({ plan }: PricingCardProps) {
               <div
                 className={
                   highlighted
-                    ? "flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 dark:bg-[#242424]"
+                    ? "flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground/[0.06] dark:bg-[#242424]"
                     : "flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-secondary dark:bg-[#242424]"
                 }
               >
                 <FeatureIcon
                   className={
                     highlighted
-                      ? "h-4 w-4 text-accent dark:text-[#e8e8e8]"
+                      ? "h-4 w-4 text-foreground/70 dark:text-[#e8e8e8]"
                       : "h-4 w-4 text-foreground/70 dark:text-[#e8e8e8]"
                   }
                   strokeWidth={2}
@@ -102,19 +103,13 @@ export function PricingCard({ plan }: PricingCardProps) {
 
       <div className="px-4 pb-4 sm:px-5 sm:pb-5">
         {highlighted ? (
-          <PrimaryButton
-            href="#"
-            className="h-11 w-full px-4 text-sm font-medium"
-          >
+          <PrimaryButton href="#" className="h-10 w-full px-4">
             Get started
           </PrimaryButton>
         ) : (
-          <a
-            href="#"
-            className="btn-secondary inline-flex h-11 w-full items-center justify-center rounded-[0.625rem] border border-border px-4 text-sm font-medium text-foreground"
-          >
+          <SecondaryButton href="#" className="h-10 w-full px-4">
             Get started
-          </a>
+          </SecondaryButton>
         )}
       </div>
     </article>

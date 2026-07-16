@@ -24,7 +24,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
         This template page is under construction. Check back soon for previews,
         details, and purchase options.
       </p>
-      <PrimaryButton href="/#templates" className="mt-8 h-10 px-5 text-sm font-medium">
+      <PrimaryButton href="/#templates" className="mt-8 h-9 px-4">
         Back to templates
       </PrimaryButton>
     </div>

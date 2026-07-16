@@ -38,7 +38,10 @@ export function StoreSection() {
       <Container>
         <Hero />
 
-        <div className="mt-12 flex flex-wrap items-center gap-3">
+        <div
+          className="mt-12 flex flex-wrap items-center gap-3"
+          data-reveal="blur-in"
+        >
           <FilterChips
             activeCategory={activeCategory}
             onCategoryChange={setActiveCategory}
@@ -48,9 +51,14 @@ export function StoreSection() {
 
         <div className="mt-8">
           {filteredTemplates.length > 0 ? (
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              data-reveal="scale-stagger"
+            >
               {filteredTemplates.map((template) => (
-                <TemplateCard key={template.slug} template={template} />
+                <div key={template.slug} data-reveal-item>
+                  <TemplateCard template={template} />
+                </div>
               ))}
             </div>
           ) : (

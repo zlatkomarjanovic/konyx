@@ -1,37 +1,23 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, MouseEventHandler, ReactNode } from "react";
+import { ButtonLabel } from "./PrimaryButton";
 
-type PrimaryButtonProps = {
+type SecondaryButtonProps = {
   children: ReactNode;
   className?: string;
   href?: string;
   onClick?: MouseEventHandler<HTMLElement>;
 } & Omit<ComponentPropsWithoutRef<"button">, "className" | "onClick">;
 
-export function ButtonLabel({ children }: { children: ReactNode }) {
-  return (
-    <span className="relative block h-4 overflow-hidden">
-      <span className="flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-1/2">
-        <span className="flex h-4 items-center justify-center whitespace-nowrap leading-none">
-          {children}
-        </span>
-        <span className="flex h-4 items-center justify-center whitespace-nowrap leading-none">
-          {children}
-        </span>
-      </span>
-    </span>
-  );
-}
-
-export function PrimaryButton({
+export function SecondaryButton({
   children,
   className = "",
   href,
   type = "button",
   onClick,
   ...props
-}: PrimaryButtonProps) {
-  const classes = `btn-primary group inline-flex items-center justify-center overflow-hidden ${className}`;
+}: SecondaryButtonProps) {
+  const classes = `btn-secondary group inline-flex items-center justify-center overflow-hidden rounded-[0.625rem] ${className}`;
 
   if (href?.startsWith("#")) {
     return (

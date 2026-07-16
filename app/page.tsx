@@ -1,4 +1,5 @@
 import { BenefitsGrid } from "./components/BenefitsGrid";
+import { Faq } from "./components/Faq";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Pricing } from "./components/Pricing";
@@ -8,10 +9,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <StoreSection />
         <BenefitsGrid />
         <Pricing />
+        <Faq />
       </main>
       <Footer />
     </>

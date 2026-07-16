@@ -3,13 +3,13 @@ import { Container } from "./Container";
 const footerLinks = [
   { href: "#templates", label: "Templates" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#", label: "Terms" },
+  { href: "#faq", label: "FAQ" },
   { href: "#", label: "Contact" },
 ];
 
 export function Footer() {
   return (
-    <footer className="py-12">
+    <footer className="py-12 pb-16">
       <Container>
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <span className="font-serif text-xl tracking-tight text-foreground">
