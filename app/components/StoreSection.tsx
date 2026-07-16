@@ -36,22 +36,19 @@ export function StoreSection() {
   return (
     <section id="templates" className="pb-section-sm pt-10 md:pb-section md:pt-14">
       <Container>
-        <div className="grid items-end gap-10 lg:grid-cols-2 lg:gap-16">
-          <Hero />
-          <div className="lg:pb-1">
-            <p className="mb-3 text-sm text-muted">Find a template</p>
-            <TemplateSearch value={searchQuery} onChange={setSearchQuery} />
-          </div>
-        </div>
+        <Hero />
 
-        <div className="mt-12 flex flex-col gap-8">
+        <div className="mt-12 flex flex-wrap items-center gap-3">
           <FilterChips
             activeCategory={activeCategory}
             onCategoryChange={setActiveCategory}
           />
+          <TemplateSearch value={searchQuery} onChange={setSearchQuery} />
+        </div>
 
+        <div className="mt-8">
           {filteredTemplates.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {filteredTemplates.map((template) => (
                 <TemplateCard key={template.slug} template={template} />
               ))}

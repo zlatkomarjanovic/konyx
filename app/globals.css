@@ -1,21 +1,40 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
+  --background: #fafbfd;
   --foreground: #18181b;
+  --surface: #f4f6f9;
+  --surface-secondary: #eef1f5;
+  --border: #e8e8e6;
+  --muted: #71717a;
+  --card: #ffffff;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #fafafa;
+  --surface: #0a0a0a;
+  --surface-secondary: #141414;
+  --border: #1f1f1f;
+  --muted: #a1a1aa;
+  --card: #0f0f0f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: #2563eb;
+  --color-accent-dark: #1d4ed8;
   --color-accent-foreground: #ffffff;
-  --color-surface: #f9f9f8;
-  --color-surface-secondary: #f4f4f2;
-  --color-muted: #71717a;
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-muted: var(--muted);
   --color-muted-foreground: #52525b;
-  --color-border: #e8e8e6;
+  --color-border: var(--border);
+  --color-card: var(--card);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-instrument-serif);
   --font-mono: var(--font-geist-mono);
@@ -28,4 +47,144 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom, #60a5fa, #1d4ed8);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 0.625rem;
+  color: var(--color-accent-foreground);
+  box-shadow: 0 1px 2px rgba(29, 78, 216, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  border-color: #60a5fa;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.2);
+}
+
+.btn-primary:active {
+  filter: brightness(1.02);
+  box-shadow: 0 1px 2px rgba(29, 78, 216, 0.18);
+}
+
+.btn-secondary {
+  background: var(--card);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    background-color 0.4s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--foreground) 20%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+.benefits-dot-pattern {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.16) 1px,
+    transparent 1px
+  );
+  background-size: 27px 27px;
+  background-position: left top;
+}
+
+.dark .benefits-dot-pattern {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.14) 1px,
+    transparent 1px
+  );
+}
+
+.template-card {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  box-shadow: 0 1px 2px rgba(20, 21, 26, 0.04);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.template-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-accent) 28%, var(--border));
+  box-shadow:
+    0 8px 24px color-mix(in srgb, var(--foreground) 6%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.dark .template-card {
+  box-shadow: none;
+}
+
+.dark .template-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--border));
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+.template-card-frame {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface-secondary);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.template-card:hover .template-card-frame {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--color-accent) 18%, var(--border));
+}
+
+.template-card-window {
+  border-radius: 0.625rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.template-card:hover .template-card-window-back {
+  transform: translate(-4px, -1px) rotate(-4deg);
+}
+
+.template-card:hover .template-card-window-mid {
+  transform: scale(1.02);
+}
+
+.template-card:hover .template-card-window-front {
+  transform: translate(4px, -2px) rotate(3deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .template-card,
+  .template-card-frame,
+  .template-card-window {
+    transition: none;
+  }
+
+  .template-card:hover,
+  .template-card:hover .template-card-frame,
+  .template-card:hover .template-card-window-back,
+  .template-card:hover .template-card-window-mid,
+  .template-card:hover .template-card-window-front {
+    transform: none;
+  }
 }

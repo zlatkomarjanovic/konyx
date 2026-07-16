@@ -1,8 +1,8 @@
+import { BenefitsGrid } from "./components/BenefitsGrid";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Pricing } from "./components/Pricing";
 import { StoreSection } from "./components/StoreSection";
-import { WhatsIncluded } from "./components/WhatsIncluded";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <main>
         <StoreSection />
-        <WhatsIncluded />
+        <BenefitsGrid />
         <Pricing />
       </main>
       <Footer />

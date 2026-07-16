@@ -1,20 +1,21 @@
+import { PrimaryButton } from "./PrimaryButton";
+
 export function Hero() {
   return (
-    <div className="max-w-xl">
-      <h1 className="font-serif text-4xl leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-[3.25rem]">
-        Start from something that already looks right
+    <div className="max-w-[33rem]">
+      <h1 className="font-serif text-3xl leading-[1.12] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+        Skip <span className="italic text-accent">twenty prompts</span> before your
+        agent stops <span className="italic text-accent">producing slop</span>.
       </h1>
-      <p className="mt-5 text-base leading-relaxed text-muted md:text-lg">
-        Premium Next.js templates for dental, wellness, real estate, and agency
-        sites — built to reskin fast with Cursor or Claude Code.
+      <p className="mt-5 text-sm leading-relaxed text-muted/80 md:text-base">
+        Stop burning prompts and tokens on a landing page that still looks like
+        typical AI slop without any taste. Start with senior-designer-quality,
+        industry-specific, ready to customize in minutes, not days.
       </p>
       <div className="mt-8">
-        <a
-          href="#included"
-          className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-6 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-        >
-          See what&apos;s included
-        </a>
+        <PrimaryButton href="#templates" className="h-11 px-6 text-sm font-medium">
+          Browse templates
+        </PrimaryButton>
       </div>
     </div>
   );

@@ -6,18 +6,22 @@ const config: Config = {
       colors: {
         accent: {
           DEFAULT: "#2563eb",
+          dark: "#1d4ed8",
           foreground: "#ffffff",
         },
         surface: {
-          DEFAULT: "#f9f9f8",
-          secondary: "#f4f4f2",
+          DEFAULT: "#f4f6f9",
+          secondary: "#eef1f5",
         },
         muted: {
           DEFAULT: "#71717a",
           foreground: "#52525b",
         },
+        card: {
+          DEFAULT: "var(--card)",
+        },
         border: {
-          DEFAULT: "#e8e8e6",
+          DEFAULT: "var(--border)",
         },
       },
       fontFamily: {

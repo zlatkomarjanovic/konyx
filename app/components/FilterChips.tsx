@@ -27,7 +27,7 @@ export function FilterChips({
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
               isActive
                 ? "bg-accent text-accent-foreground"
-                : "border border-border text-muted hover:border-foreground/20 hover:text-foreground"
+                : "border border-border bg-card text-muted hover:border-foreground/20 hover:text-foreground"
             }`}
           >
             {category.label}

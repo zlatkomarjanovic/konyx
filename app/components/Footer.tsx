@@ -9,7 +9,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-surface py-12">
+    <footer className="py-12">
       <Container>
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <span className="font-serif text-xl tracking-tight text-foreground">

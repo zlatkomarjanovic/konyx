@@ -1,64 +1,41 @@
+import { pricingPlans } from "@/lib/pricing";
 import { Container } from "./Container";
-
-const plans = [
-  {
-    name: "Single page",
-    price: 79,
-    description: "One landing page, full kit",
-    highlighted: false,
-  },
-  {
-    name: "Full site",
-    price: 149,
-    description: "Full multi-page site",
-    highlighted: true,
-  },
-  {
-    name: "Agency license",
-    price: 399,
-    description: "Unlimited client projects",
-    highlighted: false,
-  },
-];
+import { PricingCard } from "./PricingCard";
+import { SectionTag } from "./SectionTag";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-section-sm md:py-section">
-      <Container>
-        <div className="max-w-lg">
-          <p className="text-sm text-muted">Simple pricing</p>
-          <h2 className="mt-2 font-serif text-3xl tracking-tight text-foreground md:text-4xl">
-            Pick what fits
+    <section
+      id="pricing"
+      className="relative overflow-hidden bg-background py-20 sm:py-28 dark:bg-[#0a0a0a]"
+    >
+      <div
+        className="benefits-dot-pattern pointer-events-none absolute inset-0 opacity-60 dark:opacity-40"
+        aria-hidden
+      />
+
+      <Container className="relative">
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionTag>Pricing</SectionTag>
+
+          <h2 className="mt-6 font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] dark:text-white">
+            <span className="italic text-accent">Tailored plans</span> for every
+            stage of your build
           </h2>
+
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg dark:text-white/50">
+            Whether you need one page or a full client roster, pick the license
+            that fits and start shipping without the slop.
+          </p>
         </div>
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {plans.map((plan) => (
+
+        <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:gap-6">
+          {pricingPlans.map((plan) => (
             <div
-              key={plan.name}
-              className={`relative flex flex-col rounded-lg border p-6 ${
-                plan.highlighted ? "border-accent bg-surface" : "border-border"
-              }`}
+              key={plan.id}
+              className={plan.highlighted ? "lg:-mt-2 lg:mb-2" : undefined}
             >
-              {plan.highlighted && (
-                <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground">
-                  Most popular
-                </span>
-              )}
-              <h3 className="font-serif text-xl text-foreground">{plan.name}</h3>
-              <p className="mt-4 font-serif text-4xl tracking-tight text-foreground">
-                ${plan.price}
-              </p>
-              <p className="mt-3 text-sm text-muted">{plan.description}</p>
-              <button
-                type="button"
-                className={`mt-8 inline-flex h-10 w-full items-center justify-center rounded-md text-sm font-medium transition-colors ${
-                  plan.highlighted
-                    ? "bg-accent text-accent-foreground hover:bg-accent/90"
-                    : "border border-border text-foreground hover:border-foreground/20"
-                }`}
-              >
-                Get started
-              </button>
+              <PricingCard plan={plan} />
             </div>
           ))}
         </div>

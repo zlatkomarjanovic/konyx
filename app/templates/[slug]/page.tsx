@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { templates } from "@/lib/templates";
 
 type TemplatePageProps = {
@@ -24,12 +24,9 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
         This template page is under construction. Check back soon for previews,
         details, and purchase options.
       </p>
-      <Link
-        href="/#templates"
-        className="mt-8 inline-flex h-10 items-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-      >
+      <PrimaryButton href="/#templates" className="mt-8 h-10 px-5 text-sm font-medium">
         Back to templates
-      </Link>
+      </PrimaryButton>
     </div>
   );
 }
