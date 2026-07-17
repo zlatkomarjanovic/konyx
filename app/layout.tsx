@@ -22,7 +22,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Konyx — Premium Next.js templates",
+  title: "Konyx: Premium Next.js templates",
   description:
     "Premium, animated, industry-specific website templates for dental, wellness, real estate, and agency sites. Built to reskin fast with Cursor or Claude Code.",
 };

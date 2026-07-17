@@ -9,7 +9,7 @@ export const faqItems: FaqItem[] = [
     id: "included",
     question: "What's included with a Konyx template?",
     answer:
-      "Every template ships with a full Next.js project, design tokens, section components, and a reskin guide. You get production-ready layouts—not a loose collection of blocks you still have to wire together.",
+      "Every template ships with a full Next.js project, design tokens, section components, and a reskin guide. You get production-ready layouts, not a loose collection of blocks you still have to wire together.",
   },
   {
     id: "customize",
@@ -21,7 +21,7 @@ export const faqItems: FaqItem[] = [
     id: "industries",
     question: "What industries do you cover?",
     answer:
-      "We focus on high-trust verticals like dental, wellness, real estate, and agency sites—categories where generic AI output usually falls flat and polish matters most.",
+      "We focus on high-trust verticals like dental, wellness, real estate, and agency sites, where generic AI output usually falls flat and polish matters most.",
   },
   {
     id: "licensing",
