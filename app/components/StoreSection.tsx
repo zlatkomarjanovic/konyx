@@ -34,8 +34,13 @@ export function StoreSection() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <section id="templates" className="pb-section-sm pt-10 md:pb-section md:pt-14">
-      <Container>
+    <section
+      id="templates"
+      className="section-min-viewport relative overflow-hidden pb-section-sm pt-10 md:flex md:flex-col md:justify-center md:py-28"
+    >
+      <div className="store-section-bg pointer-events-none absolute inset-0" aria-hidden />
+
+      <Container className="relative w-full">
         <Hero />
 
         <div

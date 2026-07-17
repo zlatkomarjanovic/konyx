@@ -6,11 +6,11 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="relative overflow-hidden py-section-sm md:py-section"
+      className="section-min-viewport relative overflow-hidden bg-white py-section-sm md:flex md:flex-col md:justify-center md:py-28"
     >
       <div className="faq-section-bg pointer-events-none absolute inset-0" aria-hidden />
 
-      <Container className="relative">
+      <Container className="relative w-full">
         <div className="mx-auto max-w-2xl text-center" data-reveal="blur-in">
           <SectionTag>Questions</SectionTag>
 

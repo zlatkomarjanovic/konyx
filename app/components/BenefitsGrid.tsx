@@ -7,8 +7,11 @@ import { SectionTag } from "./SectionTag";
 
 export function BenefitsGrid() {
   return (
-    <section id="benefits" className="relative overflow-hidden bg-white py-section-sm dark:bg-black md:py-section">
-      <Container className="relative">
+    <section
+      id="benefits"
+      className="section-min-viewport relative overflow-hidden bg-white py-section-sm dark:bg-black md:flex md:flex-col md:justify-center md:py-28"
+    >
+      <Container className="relative w-full">
         <div
           className="mx-auto flex max-w-2xl flex-col items-center text-center"
           data-reveal="slide-left"

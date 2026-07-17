@@ -33,7 +33,7 @@ export function FaqAccordion() {
             <div
               key={item.id}
               data-reveal-item
-              className="overflow-hidden rounded-[20px] border border-border/70 bg-card dark:border-white/10"
+              className="overflow-hidden rounded-[20px] border border-border/70 bg-card transition-[background-color] duration-[400ms] ease-out hover:bg-black/[0.03] dark:border-white/10 dark:hover:bg-white/[0.04]"
             >
               <button
                 id={triggerId}
@@ -41,7 +41,7 @@ export function FaqAccordion() {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenId(open ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-black/[0.03] dark:hover:bg-white/[0.04] sm:py-[1.125rem]"
+                className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:py-[1.125rem]"
               >
                 <span className="text-sm font-medium leading-snug text-foreground sm:text-[0.9375rem]">
                   {item.question}
