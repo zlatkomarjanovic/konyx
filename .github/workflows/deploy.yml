@@ -30,7 +30,7 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Sync Vercel production environment variables
-        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        if: ${{ secrets.VERCEL_TOKEN }}
         run: |
           sync_env() {
             printf "%s" "$2" | vercel env add "$1" production --force --token=${{ secrets.VERCEL_TOKEN }}
@@ -41,11 +41,11 @@ jobs:
           sync_env REVALIDATE_SECRET "${{ secrets.REVALIDATE_SECRET }}"
 
       - name: Pull Vercel environment
-        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        if: ${{ secrets.VERCEL_TOKEN }}
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build
-        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        if: ${{ secrets.VERCEL_TOKEN }}
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
