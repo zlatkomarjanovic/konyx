@@ -2,10 +2,11 @@
 
 import { useMemo, useState } from "react";
 import {
-  CATEGORY_LABELS,
+  type CatalogFilter,
   type FilterCategory,
   type Template,
-} from "@/lib/templates";
+  productMatchesCategory,
+} from "@/lib/catalog";
 import { Container } from "./Container";
 import { FilterChips } from "./FilterChips";
 import { Hero } from "./Hero";
@@ -14,9 +15,10 @@ import { TemplateSearch } from "./TemplateSearch";
 
 type StoreSectionProps = {
   products: Template[];
+  filters: CatalogFilter[];
 };
 
-export function StoreSection({ products }: StoreSectionProps) {
+export function StoreSection({ products, filters }: StoreSectionProps) {
   const [activeCategory, setActiveCategory] = useState<FilterCategory>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -24,15 +26,15 @@ export function StoreSection({ products }: StoreSectionProps) {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
     return products.filter((template) => {
-      const matchesCategory =
-        activeCategory === "all" || template.category === activeCategory;
+      const matchesCategory = productMatchesCategory(template, activeCategory);
 
       if (!normalizedQuery) return matchesCategory;
 
       const haystack = [
         template.name,
-        CATEGORY_LABELS[template.category],
-        template.category,
+        template.description,
+        ...template.categories.map((category) => category.title),
+        ...template.categories.map((category) => category.slug),
       ]
         .join(" ")
         .toLowerCase();
@@ -56,6 +58,7 @@ export function StoreSection({ products }: StoreSectionProps) {
           data-reveal="blur-in"
         >
           <FilterChips
+            filters={filters}
             activeCategory={activeCategory}
             onCategoryChange={setActiveCategory}
           />

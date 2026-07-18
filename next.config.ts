@@ -5,11 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "v5.airtableusercontent.com",
-      },
-      {
-        protocol: "https",
-        hostname: "dl.airtableusercontent.com",
+        hostname: "cdn.sanity.io",
       },
     ],
   },

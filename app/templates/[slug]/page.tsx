@@ -8,8 +8,8 @@ import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { SecondaryButton } from "@/app/components/SecondaryButton";
 import { SectionTag } from "@/app/components/SectionTag";
 import { TemplatePreviewArt } from "@/app/components/TemplatePreviewArt";
+import { getPreviewCategory } from "@/lib/catalog";
 import { getProductBySlug, getProducts } from "@/lib/products";
-import { CATEGORY_LABELS } from "@/lib/templates";
 
 type TemplatePageProps = {
   params: Promise<{ slug: string }>;
@@ -32,6 +32,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
 
   const hasRemoteThumbnail = product.thumbnail.startsWith("http");
   const checkoutUrl = product.polarCheckoutUrl;
+  const previewCategory = getPreviewCategory(product);
 
   return (
     <>
@@ -58,13 +59,17 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
                     sizes="(max-width: 1024px) 100vw, 60vw"
                   />
                 ) : (
-                  <TemplatePreviewArt category={product.category} />
+                  <TemplatePreviewArt category={previewCategory} />
                 )}
               </div>
             </div>
 
             <div>
-              <SectionTag>{CATEGORY_LABELS[product.category]}</SectionTag>
+              <div className="flex flex-wrap gap-2">
+                {product.categories.map((category) => (
+                  <SectionTag key={category.id}>{category.title}</SectionTag>
+                ))}
+              </div>
               <h1 className="mt-4 font-serif text-4xl tracking-tight text-foreground md:text-5xl">
                 {product.name}
               </h1>

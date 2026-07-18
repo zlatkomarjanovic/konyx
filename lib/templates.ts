@@ -1,3 +1,5 @@
+import type { ProductCategory, Template } from "./catalog";
+
 export type TemplateCategory =
   | "templates"
   | "shaders"
@@ -7,49 +9,34 @@ export type TemplateCategory =
   | "images"
   | "gradients";
 
-export type Template = {
-  slug: string;
-  name: string;
-  description: string;
-  category: TemplateCategory;
-  price: number;
-  thumbnail: string;
-  polarProductId?: string;
-  polarCheckoutUrl?: string;
-  features?: string[];
-  demoUrl?: string;
-};
+export type { Template };
 
-export type FilterCategory = "all" | TemplateCategory;
-
-export const TEMPLATE_CATEGORIES: { id: FilterCategory; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "templates", label: "Templates" },
-  { id: "shaders", label: "Shaders" },
-  { id: "components", label: "Components" },
-  { id: "prompts", label: "Prompts" },
-  { id: "skills", label: "Skills" },
-  { id: "images", label: "Images" },
-  { id: "gradients", label: "Gradients" },
+export const STATIC_CATEGORIES: ProductCategory[] = [
+  { id: "templates", slug: "templates", title: "Templates", sortOrder: 1, previewKey: "templates" },
+  { id: "shaders", slug: "shaders", title: "Shaders", sortOrder: 2, previewKey: "shaders" },
+  { id: "components", slug: "components", title: "Components", sortOrder: 3, previewKey: "components" },
+  { id: "prompts", slug: "prompts", title: "Prompts", sortOrder: 4, previewKey: "prompts" },
+  { id: "skills", slug: "skills", title: "Skills", sortOrder: 5, previewKey: "skills" },
+  { id: "images", slug: "images", title: "Images", sortOrder: 6, previewKey: "images" },
+  { id: "gradients", slug: "gradients", title: "Gradients", sortOrder: 7, previewKey: "gradients" },
 ];
 
-export const CATEGORY_LABELS: Record<TemplateCategory, string> = {
-  templates: "Templates",
-  shaders: "Shaders",
-  components: "Components",
-  prompts: "Prompts",
-  skills: "Skills",
-  images: "Images",
-  gradients: "Gradients",
-};
+export function staticCategory(slug: TemplateCategory): ProductCategory {
+  const category = STATIC_CATEGORIES.find((item) => item.slug === slug);
+  if (!category) {
+    throw new Error(`Unknown static category: ${slug}`);
+  }
+  return category;
+}
 
+/** Dev/fallback catalog only. Production should load from Sanity via getCatalog(). */
 export const templates: Template[] = [
   {
     slug: "bright-smile-dental",
     name: "Bright Smile",
     description:
       "A calm dental landing page with trust-first layout, services, and booking sections ready to reskin.",
-    category: "templates",
+    categories: [staticCategory("templates")],
     price: 149,
     thumbnail: "/templates/bright-smile.jpg",
   },
@@ -58,7 +45,7 @@ export const templates: Template[] = [
     name: "Serene Wellness",
     description:
       "Soft wellness studio template with programs, testimonials, and a polished multi-page flow.",
-    category: "templates",
+    categories: [staticCategory("templates")],
     price: 149,
     thumbnail: "/templates/serene-wellness.jpg",
   },
@@ -67,7 +54,7 @@ export const templates: Template[] = [
     name: "Studio Agency",
     description:
       "Creative agency site with case studies, services, and a portfolio grid built for fast client delivery.",
-    category: "templates",
+    categories: [staticCategory("templates")],
     price: 149,
     thumbnail: "/templates/studio-agency.jpg",
   },
@@ -76,7 +63,7 @@ export const templates: Template[] = [
     name: "Aurora Mesh",
     description:
       "Animated aurora gradient mesh for hero backgrounds and landing page atmosphere.",
-    category: "shaders",
+    categories: [staticCategory("shaders")],
     price: 49,
     thumbnail: "/templates/aurora-mesh.jpg",
   },
@@ -85,7 +72,7 @@ export const templates: Template[] = [
     name: "Glass Noise",
     description:
       "Subtle grain and glass blur shader pairing for cards, navbars, and overlay panels.",
-    category: "shaders",
+    categories: [staticCategory("shaders")],
     price: 49,
     thumbnail: "/templates/glass-noise.jpg",
   },
@@ -94,7 +81,7 @@ export const templates: Template[] = [
     name: "Pricing Toggle",
     description:
       "Monthly and annual pricing toggle with animated state and accessible keyboard support.",
-    category: "components",
+    categories: [staticCategory("components")],
     price: 29,
     thumbnail: "/templates/pricing-toggle.jpg",
   },
@@ -103,7 +90,7 @@ export const templates: Template[] = [
     name: "Testimonial Stack",
     description:
       "Stacked testimonial cards with avatar, quote, and name layout you can drop into any section.",
-    category: "components",
+    categories: [staticCategory("components")],
     price: 29,
     thumbnail: "/templates/testimonial-stack.jpg",
   },
@@ -112,7 +99,7 @@ export const templates: Template[] = [
     name: "Dental Reskin Kit",
     description:
       "Cursor prompts tuned for dental sites: copy, palette swaps, and section rewrites without layout drift.",
-    category: "prompts",
+    categories: [staticCategory("prompts")],
     price: 39,
     thumbnail: "/templates/reskin-kit-dental.jpg",
   },
@@ -121,7 +108,7 @@ export const templates: Template[] = [
     name: "Section Swap Kit",
     description:
       "Prompt workflows for swapping hero, pricing, and FAQ blocks while keeping spacing intact.",
-    category: "prompts",
+    categories: [staticCategory("prompts")],
     price: 39,
     thumbnail: "/templates/section-swap-kit.jpg",
   },
@@ -130,7 +117,7 @@ export const templates: Template[] = [
     name: "Next.js Architect",
     description:
       "Agent skill for structuring App Router pages, components, and Tailwind tokens the right way.",
-    category: "skills",
+    categories: [staticCategory("skills")],
     price: 59,
     thumbnail: "/templates/nextjs-architect.jpg",
   },
@@ -139,7 +126,7 @@ export const templates: Template[] = [
     name: "Brand Reskin",
     description:
       "Skill for applying client brand colors, typography, and voice across a template without slop.",
-    category: "skills",
+    categories: [staticCategory("skills")],
     price: 59,
     thumbnail: "/templates/brand-reskin.jpg",
   },
@@ -148,7 +135,7 @@ export const templates: Template[] = [
     name: "Hero Photo Pack",
     description:
       "Curated hero imagery for local business, wellness, and studio sites with consistent crop ratios.",
-    category: "images",
+    categories: [staticCategory("images")],
     price: 35,
     thumbnail: "/templates/hero-photo-pack.jpg",
   },
@@ -157,7 +144,7 @@ export const templates: Template[] = [
     name: "Texture Grain Set",
     description:
       "Light grain overlays and paper textures for backgrounds that feel designed, not generated.",
-    category: "images",
+    categories: [staticCategory("images")],
     price: 35,
     thumbnail: "/templates/texture-grain-set.jpg",
   },
@@ -166,7 +153,7 @@ export const templates: Template[] = [
     name: "Dusk Gradient Set",
     description:
       "Warm dusk gradients for heroes, CTAs, and card accents across light and dark layouts.",
-    category: "gradients",
+    categories: [staticCategory("gradients")],
     price: 19,
     thumbnail: "/templates/dusk-gradient-set.jpg",
   },
@@ -175,7 +162,7 @@ export const templates: Template[] = [
     name: "Clinical Gradient Set",
     description:
       "Clean blue and mint gradients for healthcare, dental, and professional service brands.",
-    category: "gradients",
+    categories: [staticCategory("gradients")],
     price: 19,
     thumbnail: "/templates/clinical-gradient-set.jpg",
   },

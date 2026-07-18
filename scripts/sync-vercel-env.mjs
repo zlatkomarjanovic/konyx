@@ -3,9 +3,14 @@ const projectId = process.env.VERCEL_PROJECT_ID ?? "prj_7rYTJ3hIn3ibgWoTybuwuuvl
 const teamId = process.env.VERCEL_ORG_ID ?? "team_FOHBoHSLl1WuH0ejOTrB5vfq";
 
 const envVars = {
-  AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
-  AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID ?? "appVCc0BDAYhPAECj",
-  AIRTABLE_TABLE_NAME: process.env.AIRTABLE_TABLE_NAME ?? "Products",
+  NEXT_PUBLIC_SANITY_PROJECT_ID:
+    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "bnw13vog",
+  NEXT_PUBLIC_SANITY_DATASET:
+    process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
+  NEXT_PUBLIC_SANITY_API_VERSION:
+    process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? "2026-07-18",
+  SANITY_API_READ_TOKEN: process.env.SANITY_API_READ_TOKEN,
+  SANITY_REVALIDATE_SECRET: process.env.SANITY_REVALIDATE_SECRET,
   REVALIDATE_SECRET: process.env.REVALIDATE_SECRET,
 };
 
@@ -14,7 +19,9 @@ if (!token) {
   process.exit(1);
 }
 
-const missing = Object.entries(envVars).filter(([, value]) => !value);
+const missing = Object.entries(envVars).filter(
+  ([key, value]) => !value && key !== "SANITY_API_READ_TOKEN",
+);
 if (missing.length > 0) {
   console.error(`Missing: ${missing.map(([key]) => key).join(", ")}`);
   process.exit(1);
@@ -75,7 +82,7 @@ async function upsertEnv(key, value) {
       body: JSON.stringify({
         key,
         value,
-        type: "encrypted",
+        type: key.startsWith("NEXT_PUBLIC_") ? "plain" : "encrypted",
         target: ["production", "preview", "development"],
       }),
     },
@@ -88,6 +95,7 @@ async function upsertEnv(key, value) {
 
 async function main() {
   for (const [key, value] of Object.entries(envVars)) {
+    if (!value) continue;
     await upsertEnv(key, value);
   }
 

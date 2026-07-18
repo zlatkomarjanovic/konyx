@@ -1,22 +1,21 @@
 "use client";
 
-import {
-  TEMPLATE_CATEGORIES,
-  type FilterCategory,
-} from "@/lib/templates";
+import type { CatalogFilter, FilterCategory } from "@/lib/catalog";
 
 type FilterChipsProps = {
+  filters: CatalogFilter[];
   activeCategory: FilterCategory;
   onCategoryChange: (category: FilterCategory) => void;
 };
 
 export function FilterChips({
+  filters,
   activeCategory,
   onCategoryChange,
 }: FilterChipsProps) {
   return (
     <div className="flex flex-wrap gap-2">
-      {TEMPLATE_CATEGORIES.map((category) => {
+      {filters.map((category) => {
         const isActive = activeCategory === category.id;
 
         return (

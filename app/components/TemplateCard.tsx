@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CATEGORY_LABELS, type Template } from "@/lib/templates";
+import { getPreviewCategory, type Template } from "@/lib/catalog";
 import { SectionTag } from "./SectionTag";
 import { TemplatePreviewArt } from "./TemplatePreviewArt";
 
@@ -10,6 +10,7 @@ type TemplateCardProps = {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   const hasRemoteThumbnail = template.thumbnail.startsWith("http");
+  const previewCategory = getPreviewCategory(template);
 
   return (
     <Link
@@ -27,17 +28,21 @@ export function TemplateCard({ template }: TemplateCardProps) {
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           ) : (
-            <TemplatePreviewArt category={template.category} />
+            <TemplatePreviewArt category={previewCategory} />
           )}
         </div>
       </div>
 
       <div className="pt-3">
-        <div className="flex items-center justify-between gap-3">
-          <SectionTag className="px-2.5 py-0.5 text-xs text-muted">
-            {CATEGORY_LABELS[template.category]}
-          </SectionTag>
-          <span className="text-sm font-medium text-foreground/80">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex flex-wrap gap-1.5">
+            {template.categories.map((category) => (
+              <SectionTag key={category.id} className="px-2.5 py-0.5 text-xs text-muted">
+                {category.title}
+              </SectionTag>
+            ))}
+          </div>
+          <span className="shrink-0 text-sm font-medium text-foreground/80">
             ${template.price}
           </span>
         </div>
