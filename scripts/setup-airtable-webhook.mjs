@@ -1,7 +1,7 @@
 const token = process.env.AIRTABLE_API_KEY;
 const baseId = process.env.AIRTABLE_BASE_ID ?? "appVCc0BDAYhPAECj";
 const tableId = process.env.AIRTABLE_PRODUCTS_TABLE_ID ?? "tblhh6lr3XoQdukfc";
-const siteUrl = (process.env.SITE_URL ?? "https://konyx.vercel.app").replace(/\/$/, "");
+const siteUrl = (process.env.SITE_URL ?? "https://konyx-gold.vercel.app").replace(/\/$/, "");
 const revalidateSecret = process.env.REVALIDATE_SECRET;
 
 if (!token) {
