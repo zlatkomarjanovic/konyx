@@ -1,21 +1,29 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CATEGORY_LABELS, templates, type FilterCategory } from "@/lib/templates";
+import {
+  CATEGORY_LABELS,
+  type FilterCategory,
+  type Template,
+} from "@/lib/templates";
 import { Container } from "./Container";
 import { FilterChips } from "./FilterChips";
 import { Hero } from "./Hero";
 import { TemplateCard } from "./TemplateCard";
 import { TemplateSearch } from "./TemplateSearch";
 
-export function StoreSection() {
+type StoreSectionProps = {
+  products: Template[];
+};
+
+export function StoreSection({ products }: StoreSectionProps) {
   const [activeCategory, setActiveCategory] = useState<FilterCategory>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredTemplates = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
-    return templates.filter((template) => {
+    return products.filter((template) => {
       const matchesCategory =
         activeCategory === "all" || template.category === activeCategory;
 
@@ -31,7 +39,7 @@ export function StoreSection() {
 
       return matchesCategory && haystack.includes(normalizedQuery);
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, products, searchQuery]);
 
   return (
     <section

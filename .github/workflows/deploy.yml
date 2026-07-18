@@ -29,10 +29,25 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
+      - name: Sync Vercel production environment variables
+        run: |
+          sync_env() {
+            printf "%s" "$2" | vercel env add "$1" production --force --token=${{ secrets.VERCEL_TOKEN }}
+          }
+          sync_env AIRTABLE_API_KEY "${{ secrets.AIRTABLE_API_KEY }}"
+          sync_env AIRTABLE_BASE_ID "${{ secrets.AIRTABLE_BASE_ID }}"
+          sync_env AIRTABLE_TABLE_NAME "${{ secrets.AIRTABLE_TABLE_NAME }}"
+          sync_env REVALIDATE_SECRET "${{ secrets.REVALIDATE_SECRET }}"
+
       - name: Pull Vercel environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE_NAME: ${{ secrets.AIRTABLE_TABLE_NAME }}
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy

@@ -4,13 +4,18 @@ import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Pricing } from "./components/Pricing";
 import { StoreSection } from "./components/StoreSection";
+import { getProducts } from "@/lib/products";
 
-export default function Home() {
+export const revalidate = 120;
+
+export default async function Home() {
+  const products = await getProducts();
+
   return (
     <>
       <Navbar />
       <main className="flex-1">
-        <StoreSection />
+        <StoreSection products={products} />
         <BenefitsGrid />
         <Pricing />
         <Faq />

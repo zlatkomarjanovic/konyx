@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "setup:airtable": "node scripts/setup-airtable.mjs",
+    "setup:airtable-webhook": "node scripts/setup-airtable-webhook.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

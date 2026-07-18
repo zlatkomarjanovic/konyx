@@ -14,6 +14,10 @@ export type Template = {
   category: TemplateCategory;
   price: number;
   thumbnail: string;
+  polarProductId?: string;
+  polarCheckoutUrl?: string;
+  features?: string[];
+  demoUrl?: string;
 };
 
 export type FilterCategory = "all" | TemplateCategory;

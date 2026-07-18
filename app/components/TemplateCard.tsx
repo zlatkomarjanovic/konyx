@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CATEGORY_LABELS, type Template } from "@/lib/templates";
 import { SectionTag } from "./SectionTag";
@@ -8,6 +9,8 @@ type TemplateCardProps = {
 };
 
 export function TemplateCard({ template }: TemplateCardProps) {
+  const hasRemoteThumbnail = template.thumbnail.startsWith("http");
+
   return (
     <Link
       href={`/templates/${template.slug}`}
@@ -15,7 +18,17 @@ export function TemplateCard({ template }: TemplateCardProps) {
     >
       <div className="template-card-frame overflow-hidden p-2">
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg">
-          <TemplatePreviewArt category={template.category} />
+          {hasRemoteThumbnail ? (
+            <Image
+              src={template.thumbnail}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          ) : (
+            <TemplatePreviewArt category={template.category} />
+          )}
         </div>
       </div>
 
