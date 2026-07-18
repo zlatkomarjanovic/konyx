@@ -21,7 +21,9 @@ export type Template = {
   demoUrl?: string;
 };
 
-export type FilterCategory = "all" | string;
+export type FilterCategory = string;
+
+export const DEFAULT_FILTER_CATEGORY = "templates";
 
 export type CatalogFilter = {
   id: FilterCategory;
@@ -37,16 +39,12 @@ export function getPreviewCategory(template: Template): TemplateCategory {
 }
 
 export function productMatchesCategory(template: Template, activeCategory: FilterCategory) {
-  if (activeCategory === "all") return true;
   return template.categories.some((category) => category.slug === activeCategory);
 }
 
 export function buildCatalogFilters(categories: ProductCategory[]): CatalogFilter[] {
-  return [
-    { id: "all", label: "All" },
-    ...categories.map((category) => ({
-      id: category.slug,
-      label: category.title,
-    })),
-  ];
+  return categories.map((category) => ({
+    id: category.slug,
+    label: category.title,
+  }));
 }

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
+  DEFAULT_FILTER_CATEGORY,
   type CatalogFilter,
   type FilterCategory,
   type Template,
@@ -19,7 +20,9 @@ type StoreSectionProps = {
 };
 
 export function StoreSection({ products, filters }: StoreSectionProps) {
-  const [activeCategory, setActiveCategory] = useState<FilterCategory>("all");
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>(
+    DEFAULT_FILTER_CATEGORY,
+  );
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredTemplates = useMemo(() => {
